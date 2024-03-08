@@ -1,0 +1,39 @@
+.root {
+  :global {
+    .loading {
+      width: 100%;
+      height: 100vh;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: none;
+      img {
+        display: block;
+        min-height: 209px;
+        min-width: 200px;
+      }
+    }
+    .mouse {
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+      background-color: #fff782;
+      position: absolute;
+      animation: mouseAnimation .5s infinite ease-in-out alternate;
+      left: 0;
+      top: 0
+    }
+  
+    @keyframes mouseAnimation {
+      from {
+        width: 25px;
+        height: 25px
+      }
+      to {
+        width: 5px;
+        height: 5px
+      }
+    }
+  }
+}
