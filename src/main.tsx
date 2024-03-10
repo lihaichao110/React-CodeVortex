@@ -11,6 +11,7 @@ const config: ThemeConfig = {   // 设置 antd 主题
   token: {
     colorPrimary: '#5468ff',
     borderRadius: 6,
+    colorBgTextActive: '#252632'
   },
 }
 

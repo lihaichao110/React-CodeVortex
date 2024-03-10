@@ -1,2 +1,9 @@
-$color: red;
-$bgc: pink;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html body {
+  background-color: #f9f9fa;
+}

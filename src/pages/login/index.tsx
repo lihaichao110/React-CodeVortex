@@ -8,26 +8,14 @@ import { UserOutlined, KeyOutlined } from '@ant-design/icons';
 
 
 const Login = observer(() => {
-  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate()
+  const [messageApi, contextHolder] = message.useMessage();
   const { state } = useLocation()
 
-  // useEffect(() => {
-  //   const initDate = async () => {
-  //     const res = await getMockInfo()
-  //     console.log(res, 'res');
-  //   }
-
-  //   initDate()
-  // }, [])
-
   const onFinish = () => {
+    messageApi.success('登录成功')
     Store.setToken('登录成功')
-    navigate(state.from || '/', { replace: true })
-    messageApi.open({
-      type: 'success',
-      content: '登录成功',
-    });
+    navigate(state?.from || '/', { replace: true })
   };
 
   type FieldType = {
@@ -36,9 +24,9 @@ const Login = observer(() => {
     remember?: string;
   };
   return (<>
+    {contextHolder}
     <div className={style.root}>
       <div className="login">
-        {contextHolder}
         <div className="card">
           <h1>Login</h1>
           <Form
