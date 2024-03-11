@@ -45,15 +45,25 @@ module.exports = {
       name: '👷 ci:       CI related changes'
     }
   ],
+  scopes: [
+    { name: 'components' },
+    { name: 'utils' },
+    { name: 'hooks' },
+    { name: 'public' },
+    { name: 'styles' },
+    { name: 'store' },
+    { name: 'other' },
+  ],
   messages: {
     type: '请选择提交类型(必填)',
+    customScope: '请输入文件修改范围(可选)',
     subject: '请简要描述提交(必填)',
     body: '请输入详细描述(可选)',
     breaking: '列出任何BREAKING CHANGES(可选)',
     footer: '请输入要关闭的issue(可选)',
     confirmCommit: '确定提交此说明吗？'
   },
-  allowCustomScopes: false,
+  allowCustomScopes: true,
   allowBreakingChanges: [ 'build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'revert', 'style', 'test' ],
   subjectLimit: 72
 }
