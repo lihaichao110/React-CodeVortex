@@ -1,0 +1,39 @@
+name: react-ts-admin
+
+on:
+  push:
+    branches:
+      - main  # 触发部署的分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 下载源码
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # 打包构建
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.14.0
+    - run: npm -v
+    - run: npm install yarn -g
+    - run: yarn build
+
+    # 部署到服务器
+    - name: Deploy
+      uses: easingthemes/ssh-deploy@main
+      with:
+        EXCLUDE: node_modules
+        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        REMOTE_HOST: ${{ secrets.HOST }}
+        REMOTE_USER: ${{ secrets.USERNAME }}
+        TARGET: /usr/www/nuxt-website
+        SOURCE: dist/
+      
+      # 打印信息
+    - name: 成功执行
+      run: echo "success"
