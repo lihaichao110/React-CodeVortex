@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import Store from '@/store/modules/user'
 import { Button } from 'antd';
-import { getInfo } from '@/api/test'
+// import { getInfo } from '@/api/test'
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import url from '@/assets/imgs/login/loginBgc.jpg'
@@ -13,8 +13,8 @@ const Home = observer(() => {
   useEffect(() => {
     console.log(Store.Token, 'Store');
     const initData = async () => {
-      const res = await getInfo()
-      console.log(res, '信息');
+      // const res = await getInfo()
+      // console.log(res, '信息');
     }
 
     initData()
