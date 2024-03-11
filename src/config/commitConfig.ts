@@ -46,17 +46,18 @@ module.exports = {
     }
   ],
   scopes: [
-    { name: 'components' },
-    { name: 'utils' },
+    { name: 'components', describe: '全局组件' },
+    { name: 'utils', describe: '工具夹' },
     { name: 'hooks' },
     { name: 'public' },
     { name: 'styles' },
     { name: 'store' },
+    { name: 'pages' },
     { name: 'other' },
   ],
   messages: {
-    type: '请选择提交类型(必填)',
-    customScope: '请输入文件修改范围(可选)',
+    type: '请选择提交类型(必选)',
+    customScope: '请输入文件修改范围(必选)',
     subject: '请简要描述提交(必填)',
     body: '请输入详细描述(可选)',
     breaking: '列出任何BREAKING CHANGES(可选)',
