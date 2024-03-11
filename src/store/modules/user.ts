@@ -1,4 +1,4 @@
-import { getToken, setToken } from "@/utils/sessionStorage"
+import { getToken, removeToken, setToken } from "@/utils/sessionStorage"
 import { makeAutoObservable, observable, action } from "mobx"
 class User {
   @observable secondsPassed = 10
@@ -17,6 +17,10 @@ class User {
   }
   setToken(token: string) {
     setToken(token)
+  }
+  removeToken() {
+    removeToken()
+    this.Token = ''
   }
 }
 

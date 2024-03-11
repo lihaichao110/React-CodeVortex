@@ -1,0 +1,42 @@
+.root {
+  width: 100%;
+  height: auto;
+  :global {
+    .ant-menu-inline .ant-menu-sub.ant-menu-inline {
+      background-color: rgba($color: #ffffff, $alpha: 0);
+      .ant-menu-title-content {
+        padding-left: 10px;
+      }
+    }
+    .ant-menu-item-selected {
+      background-color: transparent;
+    }
+    .ant-menu-item-icon {
+      margin-right: 10px !important;
+    }
+    .ant-menu-item-divider {
+      margin: 10px 0;
+    }
+    .release_btn {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      width: 152px;
+      height: 40px;
+      color: #fff;
+      padding: 10px 12px;
+      background: linear-gradient(
+        102.12deg,
+        rgba($color: $primary, $alpha: 0.8) 0.47%,
+        $primary 100.47%
+      );
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      margin: 12px auto 16px;
+      .release_txt {
+        flex: 1;
+      }
+    }
+  }
+}
