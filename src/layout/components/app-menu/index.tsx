@@ -3,11 +3,11 @@ import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import style from "./index.module.scss";
 import Menus from '@/config/siderBar'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function AppMenu() {
   const navgiate = useNavigate()
-
+  const location = useLocation()
   const handleMenu: MenuProps["onClick"] = (e) => {
     navgiate(e.key)
   };
@@ -23,8 +23,10 @@ export default function AppMenu() {
         onClick={handleMenu}
         style={{ backgroundColor: "#f2f2f4" }}
         defaultSelectedKeys={["/"]}
+        selectedKeys={[location.pathname]}
+        defaultOpenKeys={[]}
         mode="inline"
-        items={Menus}
+        items={Menus as MenuProps["items"]}
         theme="light"
       />
     </div>

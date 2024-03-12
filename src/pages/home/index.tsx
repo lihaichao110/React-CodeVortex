@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import Store from '@/store/modules/user'
 import { Button } from 'antd';
-// import { getInfo } from '@/api/test'
+import AuthControl from '@/components/authControl'
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import url from '@/assets/imgs/login/loginBgc.jpg'
@@ -19,12 +19,22 @@ const Home = observer(() => {
 
     initData()
   }, [])
-  const { secondsPassed } = Store
+
+  const changMyAuth = (auths: string[]) => {
+    Store.changeAuth(auths)
+  }
   return (
     <div className={style.root}>
       <div className="content">
-        <Button type="primary" onClick={() => navigate('/donate')}>Primary Button</Button>
-        <h2>你好：{ secondsPassed }</h2>
+        <h2>当前权限：{Store.role.join('&')}</h2>
+        <Button 
+          style={{margin: '20px 20px'}} 
+          type="primary" 
+          onClick={() => changMyAuth(['admin'])}>admin权限</Button>
+        <Button style={{margin: '20px 0'}} type="primary" onClick={() => changMyAuth(['delete'])}>普通权限</Button>
+        <AuthControl auth={['admin', 'edit']}>
+          <Button type="primary" onClick={() => navigate('/donate')}>admin才显示</Button>
+        </AuthControl>
         <img src={url} alt=""/>
       </div>
     </div>

@@ -1,43 +1,79 @@
 import type { MenuProps } from "antd";
+// import Icon from "@/components/icon";
+import Store from '@/store/modules/user'
 import {
   HomeOutlined,
-  CloudOutlined,
   CommentOutlined,
   FundOutlined,
+  CloudOutlined,
 } from "@ant-design/icons";
 
-type MenuItem = Required<MenuProps>["items"][number];
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,  // 唯一标识，且是跳转地址
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-  type?: "group"
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  } as MenuItem;
-}
-
 const Menus: MenuProps["items"] = [
-  getItem("首页", "/", <HomeOutlined />),
-  { type: "divider" },
-  getItem("云剪辑", "/donate", <CloudOutlined />),
-  { type: "divider" },
-  getItem("互动管理", "/interactiveManagement", <CommentOutlined />, [
-    getItem("关注管理", "/focusManagement"),
-    getItem("私信管理", "/privateMsgManagement"),
-  ]),
-  { type: "divider" },
-  getItem("数据中心", "/dataCenter", <FundOutlined />, [
-    getItem("粉丝画像", "/fanPortrait"),
-    getItem("经营分析", "/businessAnalysis"),
-    getItem("内容分析", "/contentAnalysis"),
-  ]),
+  {
+    label: '首页',
+    key: '/',
+    icon: <HomeOutlined />
+  },
+  {
+    label: '云剪辑',
+    key: '/donate',
+    icon: <CloudOutlined />
+  },
+  {
+    label: '互动管理',
+    key: '/interactiveManagement',
+    icon: <CommentOutlined />,
+  },
+  {
+    label: '私信管理',
+    key: '/privateMsgManagement',
+  },
+  {
+    label: '关注管理',
+    key: '/focusManagement',
+  },
+  {
+    label: '数据中心',
+    key: '/dataCenter',
+    icon: <FundOutlined />,
+    children: [
+      {
+        label: '粉丝画像',
+        key: '/fanPortrait',
+      },
+      {
+        label: '经营分析',
+        key: '/businessAnalysis',
+      },
+      {
+        label: '内容分析',
+        key: '/contentAnalysis',
+      },
+      
+    ]
+  }
 ];
 
-export default Menus
+const getMenuAuth = (roles: MenuProps["items"]) => {
+  const rolesMenuList: MenuProps["items"] = []
+  roles!.forEach((item: any) => {
+    if(item === 'divider') {
+      return rolesMenuList.push({ type: 'divider' })
+    }
+    Menus!.forEach((menu: any) => {
+      if (menu.key !== item.key) return
+      if(item.children && item.children.length > 0) {
+        rolesMenuList.push({
+          ...menu,
+          children: getMenuAuth(item.children)
+        })
+      } else {
+        rolesMenuList.push(menu)
+      }
+    })
+  })
+  console.log(rolesMenuList, '菜单权限`12`12')
+  return rolesMenuList
+}
+
+export default getMenuAuth(Store.roleRoutes as any)
