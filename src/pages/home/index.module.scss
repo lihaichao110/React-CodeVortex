@@ -1,15 +1,124 @@
 .root {
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  padding: 20px;
+  min-height: 2000px;
+  position: relative;
   :global {
-    .content {
+    .bg_img {
       width: 100%;
       height: 100%;
-      img {
-        width: 100px;
+      position: absolute;
+      top: 0;
+      transform: translateY(-60px) translateX(24px);
+    }
+    .content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      .user_info {
+        width: 100%;
         height: 100px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        padding: 12px 0 12px 18px;
+        box-shadow: $shadow;
+        background: linear-gradient(
+          90deg, 
+          rgba($color: $primary, $alpha: 0.3)
+          , 30%,#fff
+        );
+
+        .avatar {
+          height: 100%;
+          width: auto;
+        }
+        .accout {
+          margin-left: 14px;
+          flex: 1;
+          width: 100%;
+          height: auto;
+          .username {
+            color: $text;
+          }
+          .chick_soup {
+            margin-top: 6px;
+            color: $text;
+          }
+        }
+      }
+      .create-home-top {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        display: flex;
+        .create-item {
+          flex: 1;
+          width: 100%;
+          height: 160px;
+          background-color: #fff;
+          margin-right: 20px;
+          box-shadow: $shadow;
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+          border-radius: 4px;
+          .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          .item-right {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba($color: $primary, $alpha: 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .item-left {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .title {
+              color: $text;
+              font-size: 18px;
+              font-weight: 700;
+              letter-spacing: 1px;
+            }
+            .number {
+              font-size: 36px;
+              color: #fff;
+            }
+            .after {
+              display: flex;
+              align-items: center;
+              color: $text;
+              .week {
+                margin-right: 8px;
+                color: $text;
+              }
+            }
+          }
+        }
+        .create-item:first-child {
+          max-width: 300px !important;
+        }
+        .create-item:nth-child(2) {
+          color: #fff;
+          background: linear-gradient(
+            90deg,
+            rgba($color: $primary, $alpha: 0.5),
+            rgba($color: $primary, $alpha: 0.8),
+          );
+        }
+        .create-item:last-child {
+          margin-right: 0;
+        }
       }
     }
   }

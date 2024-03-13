@@ -1,0 +1,15 @@
+.root {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  box-shadow: $shadow;
+  border-radius: 8px;
+  :global {
+    .tab-table-main {
+      padding: 20px;
+      width: 100%;
+      height: auto;
+      background-color: #fff; 
+    }
+  }
+}

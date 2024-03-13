@@ -5,10 +5,25 @@ import AppMenu from "./components/app-menu";
 import AppMain from "./components/app-main";
 import AppFooter from "./components/app-footer";
 import logo from "@/assets/imgs/global/logo.png";
+import { useEffect, useState } from "react";
 
 const { Header, Content, Sider } = Layout;
 
 export default function AppLayout() {
+  useEffect(() => {
+    window.addEventListener('scroll', scrollChange)
+    return () => {
+      window.removeEventListener('scroll', scrollChange)
+    }
+  }, [])
+
+  const [ isShowHeader, setIsShowHeader ] = useState(false)
+  const scrollChange = () => {
+    if(document.documentElement.scrollTop >= 60) {
+      return setIsShowHeader(true)
+    }
+    setIsShowHeader(false)
+  }
   return (
     <div className={styles.root}>
       <Layout>
@@ -20,7 +35,7 @@ export default function AppLayout() {
           <AppMenu></AppMenu>
         </Sider>
         <Layout>
-          <Header className="header">
+          <Header className="header" style={{backgroundColor: isShowHeader ? '#f9f9fa' : 'transparent'}}>
             <AppHeader></AppHeader>
           </Header>
           <Content className="app_content">
