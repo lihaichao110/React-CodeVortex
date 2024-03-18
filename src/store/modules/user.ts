@@ -16,7 +16,10 @@ class User {
     'divider', 
     {
       key: '/other',
-      children: [{key: '/other/gantt'}]
+      children: [
+        {key: '/other/gantt'},
+        {key: '/other/video'}
+      ]
     }
   ]
   @observable Token = getToken() || ''

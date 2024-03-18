@@ -23,6 +23,7 @@ function getMenus(menus: RouteType[]): any[] {
 }
 
 const getMenuAuth = (roles: MenuProps["items"]) => {
+  console.log('执行了')
   const rolesMenuList: MenuProps["items"] = []
   roles!.forEach((item: any) => {
     if(item === 'divider') {

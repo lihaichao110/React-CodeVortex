@@ -12,6 +12,7 @@ const Home = lazy(() => import('@/pages/home/index'))
 const RichText = lazy(() => import('@/pages/editor/richText'))
 const MarkDown = lazy(() => import('@/pages/editor/markDown'))
 const Gantt = lazy(() => import('@/pages/other/gantt'))
+const Video = lazy(() => import('@/pages/other/video'))
 
 export const routes: RouteType[] = [
   {
@@ -57,6 +58,13 @@ export const routes: RouteType[] = [
             path: "/other/gantt",
             element: <AuthProvider>
               <Gantt />
+            </AuthProvider>
+          },
+          {
+            label: '实时直播',
+            path: "/other/video",
+            element: <AuthProvider>
+              <Video />
             </AuthProvider>
           }
         ]

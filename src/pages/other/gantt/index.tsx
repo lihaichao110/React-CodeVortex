@@ -13,6 +13,10 @@ export default function Gantt() {
         {
           startTime: 1711065600000,
           endTime: 1711324800000
+        },
+        {
+          startTime: 1712505600000,
+          endTime: 1712678400000
         }
       ],
     },

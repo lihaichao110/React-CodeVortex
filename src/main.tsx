@@ -1,7 +1,6 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'normalize.css'
-import Loading from '@/components/loading'
 
 // antd 部分
 import { ConfigProvider } from 'antd';
@@ -25,9 +24,7 @@ import '../mock/mock'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ConfigProvider theme={config} locale={zhCN}>
-      <Suspense fallback={<Loading/>}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <RouterProvider router={router} />
     </ConfigProvider>
   </React.StrictMode>,
 )
