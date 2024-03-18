@@ -6,11 +6,17 @@ class User {
   @observable roleRoutes = [
     {key: '/'}, 
     'divider', 
-    {key: '/donate'},
+    {
+      key: '/editor',
+      children: [
+        {key: '/editor/richText'},
+        {key: '/editor/markDown'}
+      ]
+    },
     'divider', 
     {
-      key: '/interactiveManagement',
-      children: [{key: '/focusManagement'}]
+      key: '/other',
+      children: [{key: '/other/gantt'}]
     }
   ]
   @observable Token = getToken() || ''

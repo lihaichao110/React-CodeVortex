@@ -25,7 +25,7 @@ echarts.use([
 export default function GraphTrend() {
   useEffect(() => {
     const chartDom = document.getElementById('graph-trend')
-    const  myChart = echarts.init(chartDom)
+    const myChart = echarts.init(chartDom)
 
     const option = {
       color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
@@ -201,6 +201,9 @@ export default function GraphTrend() {
     };
 
     option && myChart.setOption(option);
+    return () => {
+      myChart.dispose();
+    }
   }, [])
   return (
     <div style={{width: '100%', height: '100%', minHeight: 200}} id='graph-trend'></div>

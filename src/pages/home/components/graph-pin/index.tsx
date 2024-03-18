@@ -48,10 +48,9 @@ export default function GraphPin() {
     };
     option && myChart.setOption(option);
 
-    window.addEventListener('resize', myChart.resize() as any);
 
     return () => {
-      window.removeEventListener('resize', myChart.resize() as any)
+      myChart.dispose()
     }
   }, [])
 

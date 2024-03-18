@@ -5,9 +5,11 @@ import { useState } from 'react';
 
 interface DataType {
   key: string;
+  sku: string
   name: string;
   age: number;
   address: string;
+  title: string
   tags: string[];
   tagType: string
 }
@@ -26,9 +28,17 @@ export default function TabTable() {
   
   const columns: TableProps<DataType>['columns'] = [
     {
+      title: 'SKU',
+      dataIndex: 'sku',
+      key: 'sku',
+      width: 100,
+      align: 'center',
+    },
+    {
       title: '标题',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'title',
+      key: 'title',
+      width: 180,
       align: 'center',
       render: (text) => <a>{text}</a>,
     },
@@ -36,12 +46,15 @@ export default function TabTable() {
       title: '作者',
       dataIndex: 'name',
       key: 'name',
+      width: 100,
+      align: 'center',
     },
     {
       title: '评级',
-      dataIndex: 'address',
-      key: 'address',
+      dataIndex: 'pingji',
+      key: 'pingji',
       align: 'center',
+      width: 200,
       render: () => (
         <>
           <Rate />
@@ -52,12 +65,14 @@ export default function TabTable() {
       title: '数量',
       dataIndex: 'age',
       key: 'age',
+      width: 100,
       align: 'center',
     },
     {
       title: '开关',
-      dataIndex: 'address',
-      key: 'address',
+      dataIndex: 'switch',
+      key: 'switch',
+      width: 100,
       align: 'center',
       render: () => (
         <>
@@ -70,6 +85,7 @@ export default function TabTable() {
       key: 'tags',
       dataIndex: 'tags',
       align: 'center',
+      width: 200,
       render: (_, { tags, tagType }) => (
         <>
           {tags.map((tag) => {
@@ -84,9 +100,10 @@ export default function TabTable() {
     },
     {
       title: '时间',
-      dataIndex: 'address',
-      key: 'address',
+      dataIndex: 'time',
+      key: 'time',
       align: 'center',
+      width: 200,
       render: () => (
         <>
           <span>2024-03-13 17:38:00</span>
@@ -97,6 +114,8 @@ export default function TabTable() {
       title: '操作',
       key: 'action',
       align: 'center',
+      fixed: 'right',
+      width: 230,
       render: () => (
         <>
           <Button type="link">详情</Button>
@@ -110,6 +129,8 @@ export default function TabTable() {
   const data: DataType[] = [
     {
       key: '1',
+      sku: 'E10001',
+      title: '问世间情为何物',
       name: '李强',
       age: 32,
       address: '就按我的就看见阿德氨基酸',
@@ -119,29 +140,37 @@ export default function TabTable() {
     {
       key: '2',
       name: '虞书欣',
+      title: '问世间情为何物',
       age: 42,
+      sku: 'E10001',
       address: '几千万那你去问去问',
       tags: ['error'],
       tagType: 'error'
     },
     {
       key: '3',
+      sku: 'E10001',
       name: '李文文',
+      title: '问世间情为何物',
       age: 32,
       address: '群文件恩情文件筐请问',
       tags: ['success', 'teacher'],
       tagType: 'warning'
     },
     {
-      key: '3',
+      key: '4',
+      sku: 'E10001',
       name: '李文文',
+      title: '问世间情为何物',
       age: 32,
       address: '群文件恩情文件筐请问',
       tags: ['success', 'teacher'],
       tagType: 'warning'
     },
     {
-      key: '2',
+      key: '5',
+      sku: 'E10001',
+      title: '问世间情为何物',
       name: '虞书欣',
       age: 42,
       address: '几千万那你去问去问',
@@ -160,7 +189,12 @@ export default function TabTable() {
           }}
         />
 
-        <Table rowSelection={rowSelection} columns={columns} dataSource={data} pagination={false}/>
+        <Table 
+          rowSelection={rowSelection} 
+          columns={columns} 
+          dataSource={data} 
+          scroll={{ x: 'calc(700px + 50%)'}}
+          pagination={false}/>
       </div>
     </div>
   )

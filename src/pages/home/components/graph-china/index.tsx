@@ -6,6 +6,7 @@ import {
   GeoComponent
 } from "echarts/components";
 import chinaJson from './china.json'
+import { MapChart } from 'echarts/charts'
 import { UniversalTransition } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
 import { useEffect } from "react";
@@ -17,6 +18,7 @@ echarts.use([
   CanvasRenderer,
   UniversalTransition,
   GeoComponent,
+  MapChart
 ]);
 
 export default function GraphTrend() {
@@ -102,10 +104,8 @@ export default function GraphTrend() {
         emphasis: {
           label: {
             color: '#fff'
-          }
-        },
-        itemStyle: {
-          emphasis: {
+          },
+          itemStyle: {
             areaColor: '#5468ff', //鼠标选择区域颜色
             shadowOffsetX: 0,
             shadowOffsetY: 0,
@@ -115,7 +115,7 @@ export default function GraphTrend() {
             label: {
               color: '#000'
             }
-          },
+          }
         },
       },
 
@@ -130,6 +130,10 @@ export default function GraphTrend() {
       ],
     };
     option && myChart.setOption(option);
+
+    return () => {
+      myChart.dispose();
+    }
   }, []);
   return (
     <div
