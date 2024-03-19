@@ -19,6 +19,37 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
+    build: {
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, './index.html'),
+        },
+        output: {
+          dir: './dist',
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return id
+                .toString()
+                .split('node_modules/')[1]
+                .split('/')[0]
+                .toString();
+            }
+          },
+          // chunkFileNames: 'assets/js/[name]-[hash].js',
+          chunkFileNames: (chunkInfo) => {
+            const facadeModuleId = chunkInfo.facadeModuleId
+              ? chunkInfo.facadeModuleId.split('/')
+              : [];
+            const fileName =
+              facadeModuleId[facadeModuleId.length - 2] || '[name]';
+            return `assets/js/${fileName}/[name]-[hash].js`;
+          },
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+        },
+      },
+    },
     base: './',
     resolve: {
       alias: {
