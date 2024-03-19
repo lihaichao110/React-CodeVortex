@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
           main: path.resolve(__dirname, './index.html'),
         },
         output: {
-          dir: './dist',
+          dir: './dist/app',
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return id
