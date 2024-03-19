@@ -80,6 +80,8 @@ export const routes: RouteType[] = [
     Component: lazy(() => import('@/components/404/index'))
   }
 ]
-const router = createBrowserRouter(routes as RouteObject[])
+const router = createBrowserRouter(routes as RouteObject[], {
+  basename: '/app/'
+})
 
 export default router

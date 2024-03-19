@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
   const proxyUrl = loadEnv(mode, process.cwd()).VITE_APP_BASEURL;
   
   return {
+    base: '/app/',
     server: {
       proxy: {
         [proxyName]: {
@@ -50,7 +51,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    base: './',
     resolve: {
       alias: {
         '@': path.join(__dirname, 'src')
