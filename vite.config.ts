@@ -17,6 +17,13 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => {
             return path.replace(new RegExp(`^${proxyName}`), '')
           }
+        },
+        '/test' : {
+          target: 'https://sample-videos.com',
+          changeOrigin: true,
+          rewrite: (path) => {
+            return path.replace(new RegExp(`^/test`), '')
+          }
         }
       }
     },

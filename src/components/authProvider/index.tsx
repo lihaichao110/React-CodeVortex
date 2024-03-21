@@ -7,14 +7,14 @@ type PropsType = {
   children: JSX.Element 
 }
 
-export default function AuthProvider({ children }: PropsType) {
+export default function AuthProvider({children}: PropsType) {
   const { pathname } = useLocation()
 
   if(!hasToken()) {
     return <Navigate to='/login' state={{ from: pathname }} replace={true}/>
   } else {
     return <Suspense fallback={<Loading />}>
-      {children}
+      {children}  
     </Suspense>
   }
 }

@@ -8,7 +8,7 @@ interface PropsType {
 type LoginType = typeof Login | PropsType
 function validateDecorator(target: LoginType) {
   // const targetClass = target as PropsType
-  (target as unknown as PropsType).title = '测试'
+  (target as PropsType).title = '测试'
 }
 
 @validateDecorator

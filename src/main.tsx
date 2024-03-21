@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'normalize.css'
 
@@ -22,9 +21,7 @@ import router from '@/router'
 import '../mock/mock'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ConfigProvider theme={config} locale={zhCN}>
-      <RouterProvider router={router} />
-    </ConfigProvider>
-  </React.StrictMode>,
+  <ConfigProvider theme={config} locale={zhCN}>
+    <RouterProvider router={router} />
+  </ConfigProvider>
 )

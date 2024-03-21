@@ -23,9 +23,11 @@ export const routes: RouteType[] = [
         index: true,
         label: '首页',
         icon: <HomeOutlined />,
-        element: <AuthProvider>
-          <Home />
-        </AuthProvider>
+        element: (
+           <AuthProvider>
+            <Home />
+          </AuthProvider>
+        )
       },
       {
         path: "/editor",
