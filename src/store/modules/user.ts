@@ -18,7 +18,8 @@ class User {
       key: '/other',
       children: [
         {key: '/other/gantt'},
-        {key: '/other/video'}
+        {key: '/other/video'},
+        {key: '/other/workflow'}
       ]
     }
   ]

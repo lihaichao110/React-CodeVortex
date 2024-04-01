@@ -1,4 +1,4 @@
-import { lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from "react-router-dom";
 import AuthProvider from '@/components/authProvider';
 import type { RouteObject } from "react-router";
@@ -8,11 +8,14 @@ import {
   AppstoreOutlined
 } from "@ant-design/icons";
 const Layout = lazy(() => import('@/layout/index'))
+const Login = lazy(() => import('@/pages/login/index'))
+const NotFound = lazy(() => import('@/components/404/index'))
 const Home = lazy(() => import('@/pages/home/index'))
 const RichText = lazy(() => import('@/pages/editor/richText'))
 const MarkDown = lazy(() => import('@/pages/editor/markDown'))
 const Gantt = lazy(() => import('@/pages/other/gantt'))
 const Video = lazy(() => import('@/pages/other/video'))
+const WorkFlow = lazy(() => import('@/pages/other/workflow'))
 
 export const routes: RouteType[] = [
   {
@@ -24,7 +27,7 @@ export const routes: RouteType[] = [
         label: '首页',
         icon: <HomeOutlined />,
         element: (
-           <AuthProvider>
+          <AuthProvider>
             <Home />
           </AuthProvider>
         )
@@ -68,6 +71,13 @@ export const routes: RouteType[] = [
             element: <AuthProvider>
               <Video />
             </AuthProvider>
+          },
+          {
+            label: '流程图',
+            path: "/other/workflow",
+            element: <AuthProvider>
+              <WorkFlow />
+            </AuthProvider>
           }
         ]
       }
@@ -75,11 +85,15 @@ export const routes: RouteType[] = [
   },
   {
     path: "/login",
-    Component: lazy(() => import('@/pages/login/index'))
+    element: <Suspense>
+      <Login></Login>
+    </Suspense>
   },
   {
     path: '*',
-    Component: lazy(() => import('@/components/404/index'))
+    element: <Suspense>
+      <NotFound></NotFound>
+    </Suspense>
   }
 ]
 const router = createBrowserRouter(routes as RouteObject[], {
