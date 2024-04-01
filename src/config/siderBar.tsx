@@ -4,7 +4,6 @@ import { routes } from '@/router/index'
 // import Icon from "@/components/icon";
 
 // 只遍历 / 下的路由信息
-// console.log(routes, 'routes');
 const traversibleRoutes: RouteType[] | undefined = routes?.find(item => item.path === '/')?.children
 // 获取扁平路由菜单
 function getMenus(menus: RouteType[]): any[] {
