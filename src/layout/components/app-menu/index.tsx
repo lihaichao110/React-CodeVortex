@@ -15,7 +15,7 @@ export default function AppMenu() {
 
   // 使用 useMemo 优化，减少渲染次数
   const SiderBaiMenus = useMemo(() => {
-    return Menus
+    return Menus()
   }, [])
 
   // 默认打开的菜单

@@ -1,10 +1,12 @@
 import type { MenuProps } from "antd";
 import Store from '@/store/modules/user'
 import { routes } from '@/router/index'
-// import Icon from "@/components/icon";
 
 // 只遍历 / 下的路由信息
-const traversibleRoutes: RouteType[] | undefined = routes?.find(item => item.path === '/')?.children
+function getRouteByList(): RouteType[] | undefined {
+  return routes?.find(item => item.path === '/')?.children
+}
+
 // 获取扁平路由菜单
 function getMenus(menus: RouteType[]): any[] {
   let resultRoutes: any[] = []
@@ -28,7 +30,7 @@ const getMenuAuth = (roles: MenuProps["items"]) => {
     if(item === 'divider') {
       return rolesMenuList.push({ type: 'divider' })
     }
-    getMenus(traversibleRoutes!).forEach((menu: any) => {
+    getMenus(getRouteByList()!).forEach((menu: any) => {
       if (menu.key !== item.key) return
       if(item.children && item.children.length > 0) {
         // console.log(getMenuAuth(item.children), '菜单权限`12`12')
@@ -44,4 +46,4 @@ const getMenuAuth = (roles: MenuProps["items"]) => {
   return rolesMenuList
 }
 
-export default getMenuAuth(Store.roleRoutes as any)
+export default () => getMenuAuth(Store.roleRoutes as any)

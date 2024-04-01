@@ -11,13 +11,9 @@ export default function Gantt() {
       projectManager: '张三',
       projectTime: [
         {
-          startTime: 1711065600000,
-          endTime: 1711324800000
+          startTime: 1712678400000,
+          endTime: 1712851200000
         },
-        {
-          startTime: 1712505600000,
-          endTime: 1712678400000
-        }
       ],
     },
     {
@@ -25,21 +21,21 @@ export default function Gantt() {
       projectManager: '李四',
       projectTime: [
         {
-          startTime: 1711584000000,
-          endTime: 1711756800000 
+          startTime: 1713196800000,
+          endTime: 1713369600000 
         }
       ],
     },
-    {
-      projectName: '项目3',
-      projectManager: '王五',
-      projectTime: [
-        {
-          startTime: 1712016000000,
-          endTime: 1712188800000 
-        }
-      ],
-    }
+    // {
+    //   projectName: '项目3',
+    //   projectManager: '王五',
+    //   projectTime: [
+    //     {
+    //       startTime: 1712016000000,
+    //       endTime: 1712188800000 
+    //     }
+    //   ],
+    // }
   ])
 
   type ComputedTime = {
@@ -82,15 +78,6 @@ export default function Gantt() {
     }
   }
 
-  // 计算引导文案元素宽高
-  useEffect(() => {
-    const dataList = document.querySelector('.data-list')
-    const guideDesc = document.querySelector('.guide .desc') as HTMLElement
-    guideDesc!.style.height = dataList?.clientHeight + 'px'
-    guideDesc!.style.width = dataList?.clientHeight + 'px'
-  }, [])
-
-
   // 获取最近 30天 日期信息
   const lastDay = () => {
     if(lastDaysCacha && lastDaysCacha.length) {
@@ -117,7 +104,7 @@ export default function Gantt() {
     }
 
     lastDays.forEach((item: LastDaysType, index: number) => {
-      if(currentMonthSurplusDay < 30) {
+      if(currentMonthSurplusDay <= 30) {
         if(index === 0) {
           for (let i = 0; i < currentMonthSurplusDay; i++) {
             const dayI = new Date(new Date().getTime()+i*(24*60*60*1000)).getDate()
@@ -147,6 +134,18 @@ export default function Gantt() {
     setLastDaysCacha(lastDays)
     return lastDays
   }
+  useEffect(() => {
+    const init = async () => {
+      await lastDay()
+
+      // 计算引导文案元素宽高
+      const dataList = document.querySelector('.data-list')
+      const guideDesc = document.querySelector('.guide .desc') as HTMLElement
+      guideDesc!.style.height = dataList?.clientHeight + 'px'
+      guideDesc!.style.width = dataList?.clientHeight + 'px'
+    }
+    init()
+  })
   return (
     <div className={styles.root}>
       <div className="inner">
@@ -170,7 +169,7 @@ export default function Gantt() {
         <div className="content">
           <div className="data-list">
             {
-              lastDay().map((item: LastDaysType) => {
+              lastDaysCacha.map((item: LastDaysType) => {
                 return (
                   <div className="month-item" key={item.yearMonth}>
                     <div className="month">{item.yearMonth}</div>

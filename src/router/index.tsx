@@ -7,7 +7,8 @@ import {
   FormOutlined,
   AppstoreOutlined
 } from "@ant-design/icons";
-const Layout = lazy(() => import('@/layout/index'))
+import Layout from '@/layout/index'
+import Loading from '@/components/loading';
 const Login = lazy(() => import('@/pages/login/index'))
 const NotFound = lazy(() => import('@/components/404/index'))
 const Home = lazy(() => import('@/pages/home/index'))
@@ -17,7 +18,15 @@ const Gantt = lazy(() => import('@/pages/other/gantt'))
 const Video = lazy(() => import('@/pages/other/video'))
 const WorkFlow = lazy(() => import('@/pages/other/workflow'))
 
-export const routes: RouteType[] = [
+function AsyncComponent(children: JSX.Element) {
+  return (
+    <Suspense fallback={<Loading/>}>
+      {children}
+    </Suspense>
+  )
+}
+
+const routes: RouteType[] = [
   {
     path: "/",
     Component: Layout,
@@ -85,15 +94,11 @@ export const routes: RouteType[] = [
   },
   {
     path: "/login",
-    element: <Suspense>
-      <Login></Login>
-    </Suspense>
+    element: AsyncComponent(<Login />)
   },
   {
     path: '*',
-    element: <Suspense>
-      <NotFound></NotFound>
-    </Suspense>
+    element: AsyncComponent(<NotFound />)
   }
 ]
 const router = createBrowserRouter(routes as RouteObject[], {
@@ -101,3 +106,6 @@ const router = createBrowserRouter(routes as RouteObject[], {
 })
 
 export default router
+export {
+  routes
+}
