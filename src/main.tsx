@@ -8,7 +8,7 @@ import zhCN from 'antd/locale/zh_CN';
 const config: ThemeConfig = {   // 设置 antd 主题
   token: {
     colorPrimary: '#5468ff',
-    borderRadius: 6,
+    borderRadius: 4,
     colorBgTextActive: '#252632'
   },
 }

@@ -17,6 +17,8 @@ const MarkDown = lazy(() => import('@/pages/editor/markDown'))
 const Gantt = lazy(() => import('@/pages/other/gantt'))
 const Video = lazy(() => import('@/pages/other/video'))
 const WorkFlow = lazy(() => import('@/pages/other/workflow'))
+const ValidateCode = lazy(() => import('@/pages/other/validate-code'))
+const PanoramaVR = lazy(() => import('@/pages/other/panorama-vr'))
 
 function AsyncComponent(children: JSX.Element) {
   return (
@@ -86,6 +88,20 @@ const routes: RouteType[] = [
             path: "/other/workflow",
             element: <AuthProvider>
               <WorkFlow />
+            </AuthProvider>
+          },
+          {
+            label: '滑块验证码',
+            path: "/other/validateCode",
+            element: <AuthProvider>
+              <ValidateCode />
+            </AuthProvider>
+          },
+          {
+            label: '全景VR',
+            path: "/other/panoramaVR",
+            element: <AuthProvider>
+              <PanoramaVR />
             </AuthProvider>
           }
         ]

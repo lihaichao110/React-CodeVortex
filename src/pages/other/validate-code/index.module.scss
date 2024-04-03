@@ -1,0 +1,71 @@
+.root {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  :global {
+    .validate-box {
+      width: 500px;
+      height: 300px;
+      margin: 0 auto;
+      position: relative;
+    }
+    #canvasbg {
+      width: 100%;
+      height: auto;
+    }
+    #canvas {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+
+    .bottomcode {
+      width: 100%;
+      height: 54px;
+      box-sizing: border-box;
+      border-left: 2px solid #ddd;
+      border-radius: 3px;
+      background-color: #dcdfe6;
+      position: relative;
+    }
+    .bottomcode::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      color: #b0b0c9;
+      transform: translateX(-50%) translateY(-18px);
+      font-size: 16px;
+      content: '拖动滑块完成拼图';
+      z-index: 6;
+    }
+
+    .codebox {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      box-sizing: border-box;
+      background: rgb(0, 150, 200);
+      border-radius: 3px;
+      z-index: 7;
+    }
+
+    .code {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      /* border: 1px solid #000; */
+      border-radius: 3px;
+      box-sizing: border-box;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      background: #fff;
+    }
+  }
+}
+

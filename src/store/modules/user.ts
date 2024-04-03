@@ -19,7 +19,9 @@ class User {
       children: [
         {key: '/other/gantt'},
         {key: '/other/video'},
-        {key: '/other/workflow'}
+        {key: '/other/workflow'},
+        {key: '/other/validateCode'},
+        {key: '/other/panoramaVR'},
       ]
     }
   ]
