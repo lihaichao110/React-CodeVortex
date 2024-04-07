@@ -19,6 +19,7 @@ const Video = lazy(() => import('@/pages/other/video'))
 const WorkFlow = lazy(() => import('@/pages/other/workflow'))
 const ValidateCode = lazy(() => import('@/pages/other/validate-code'))
 const PanoramaVR = lazy(() => import('@/pages/other/panorama-vr'))
+const Print = lazy(() => import('@/pages/other/print'))
 
 function AsyncComponent(children: JSX.Element) {
   return (
@@ -102,6 +103,13 @@ const routes: RouteType[] = [
             path: "/other/panoramaVR",
             element: <AuthProvider>
               <PanoramaVR />
+            </AuthProvider>
+          },
+          {
+            label: '打印',
+            path: "/other/print",
+            element: <AuthProvider>
+              <Print />
             </AuthProvider>
           }
         ]

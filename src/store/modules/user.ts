@@ -22,6 +22,7 @@ class User {
         {key: '/other/workflow'},
         {key: '/other/validateCode'},
         {key: '/other/panoramaVR'},
+        {key: '/other/print'},
       ]
     }
   ]
