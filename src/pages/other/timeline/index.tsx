@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import styles from './index.module.scss'
+import { useEffect } from 'react'
 
 export default function TimeLine() {
   // ------------------------------------------------ 根据 type 设置对应颜色
@@ -77,6 +78,21 @@ export default function TimeLine() {
   const timeLineItemWidth = 100 / rowCount + '%' // 设置每一个的宽度
   const getTimeLineRowNum = Math.ceil(activities.length / rowCount) // 页面展示行数
 
+  // 初始化判断半圆的宽高
+  useEffect(() => {
+    if(getTimeLineRowNum < 2) return
+		const timeLineRowAll = document.querySelectorAll('.timeLine-row .color-block')
+		const timeLineRowFirst = timeLineRowAll[0] as HTMLElement
+		const timeLineRowSecond = timeLineRowAll[0+rowCount] as HTMLElement
+		const h = timeLineRowSecond.offsetTop - timeLineRowFirst.offsetTop + 20
+		const roundAlls = document.querySelectorAll('.round')
+		for (let i = 0; i < roundAlls.length; i++) {
+			const item = roundAlls[i] as HTMLElement
+			item.style.height = h + 'px'
+			item.style.width = h  +'px'
+		}
+  }, [getTimeLineRowNum])
+
   // -------------------------------------------- 是否是相反方向的一行
   const isReverseRow = (rowIndex: number) => {
     return rowIndex % 2
@@ -120,6 +136,7 @@ export default function TimeLine() {
                       style={{
                         width: timeLineItemWidth,
                       }}
+                      key={index}
                       className="lhc-timeLine-item">
                       <div className="item-content">
                         <div className="item-text">{item.text}</div>
@@ -161,7 +178,11 @@ export default function TimeLine() {
                           }
                         </div>
                       </div>
-                      <span className="timeLine-item-time">{item.timestamp}</span>
+                      <span
+                        style={{
+                          transform: isReverseRow(rowIndex) ? 'translateX(50%)' : 'translateX(-50%)',
+                        }}
+                        className="timeLine-item-time">{item.timestamp}</span>
                     </div>
                   )
                 })
