@@ -11,8 +11,8 @@ export default function Gantt() {
       projectManager: '张三',
       projectTime: [
         {
-          startTime: 1712678400000,
-          endTime: 1712851200000
+          startTime: new Date().getTime(),
+          endTime: (new Date().getTime()+1000*60*60*24*3)
         },
       ],
     },
@@ -21,8 +21,8 @@ export default function Gantt() {
       projectManager: '李四',
       projectTime: [
         {
-          startTime: 1713196800000,
-          endTime: 1713369600000 
+          startTime: (new Date().getTime()+1000*60*60*24*4),
+          endTime: (new Date().getTime()+1000*60*60*24*6)
         }
       ],
     },

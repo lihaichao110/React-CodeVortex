@@ -20,6 +20,7 @@ const WorkFlow = lazy(() => import('@/pages/other/workflow'))
 const ValidateCode = lazy(() => import('@/pages/other/validate-code'))
 const PanoramaVR = lazy(() => import('@/pages/other/panorama-vr'))
 const Print = lazy(() => import('@/pages/other/print'))
+const TimeLine = lazy(() => import('@/pages/other/timeline'))
 
 function AsyncComponent(children: JSX.Element) {
   return (
@@ -110,6 +111,13 @@ const routes: RouteType[] = [
             path: "/other/print",
             element: <AuthProvider>
               <Print />
+            </AuthProvider>
+          },
+          {
+            label: '时间线',
+            path: "/other/timeLine",
+            element: <AuthProvider>
+              <TimeLine />
             </AuthProvider>
           }
         ]

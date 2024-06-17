@@ -23,6 +23,7 @@ class User {
         {key: '/other/validateCode'},
         {key: '/other/panoramaVR'},
         {key: '/other/print'},
+        {key: '/other/timeLine'},
       ]
     }
   ]
