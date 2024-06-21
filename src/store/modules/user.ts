@@ -24,6 +24,7 @@ class User {
         {key: '/other/panoramaVR'},
         {key: '/other/print'},
         {key: '/other/timeLine'},
+        {key: '/other/AIChart'},
       ]
     }
   ]

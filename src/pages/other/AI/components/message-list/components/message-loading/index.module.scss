@@ -1,0 +1,27 @@
+.loading {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  @keyframes colorChange {
+    to {
+      background-color: rgba($color: $primary, $alpha: 0.5);
+    }
+  }
+  :global {
+    .loading-dot :local {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: $primary;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: colorChange 0.6s ease-in-out infinite alternate;
+    }
+
+    @for $i from 1 through 3 {
+      .loading-dot:nth-child(#{$i}) :local {
+        animation-delay: ($i - 1) * 0.2s;
+      }
+    }
+  }
+}

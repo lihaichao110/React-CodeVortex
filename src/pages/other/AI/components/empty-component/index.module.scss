@@ -1,0 +1,104 @@
+.empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  :global {
+    @media (min-width: 1500px) {
+      .examples-create {
+        max-height: none !important;
+      }
+    }
+    .content {
+      width: 100%;
+      height: auto;
+      .title {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: #1c1f23;
+      }
+      .example-box {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 16px 0;
+        .example-item {
+          flex: 1;
+          min-width: 40%;
+          height: auto;
+          border-radius: 10px;
+          background-color: #f9fafb;
+          border: 1px solid #dbdcdc;
+          display: flex;
+          padding: 12px 16px;
+          cursor: pointer;
+          .create-icon {
+            margin-right: 10px;
+          }
+          .create-text {
+            flex: 1;
+            .text {
+              font-size: 14px;
+              font-weight: 700;
+              margin-bottom: 6px;
+            }
+            .sub-text {
+              font-size: 14px;
+              color: rgba($color: #000000, $alpha: 0.8);
+            }
+          }
+        }
+        .example-item:hover {
+          background-color: #f3f4f6;
+        }
+
+      }
+      .example-txt {
+        color: #00000080;
+        font-size: 14px;
+      }
+
+      .examples-create {
+        width: 100%;
+        height: 100%;
+        max-height: 120px;
+        overflow-y: auto;
+        padding: 4px 0;
+        .example-item-txt {
+          cursor: pointer;
+          margin-top: 12px;
+          margin-right: 10px;
+          display: inline-block;
+          width: auto;
+          padding: 12px 15px;
+          color: #000000D9;
+          font-size: 14px;
+          border-radius: 10px;
+          background-color: #f9fafb;
+          border: 1px solid #dbdcdc;
+        }
+        .example-item-txt:hover {
+          background-color: #f3f4f6;
+        }
+      }
+      // 设置滚动条样式
+      .examples-create::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .examples-create::-webkit-scrollbar-thumb {
+        background-color: #cccccc;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 900px) {
+//   .examples-create {
+//   background-color: pink;
+//   }
+// }

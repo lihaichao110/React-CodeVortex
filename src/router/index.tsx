@@ -21,6 +21,7 @@ const ValidateCode = lazy(() => import('@/pages/other/validate-code'))
 const PanoramaVR = lazy(() => import('@/pages/other/panorama-vr'))
 const Print = lazy(() => import('@/pages/other/print'))
 const TimeLine = lazy(() => import('@/pages/other/timeline'))
+const AIChart = lazy(() => import('@/pages/other/AI/index'))
 
 function AsyncComponent(children: JSX.Element) {
   return (
@@ -118,6 +119,13 @@ const routes: RouteType[] = [
             path: "/other/timeLine",
             element: <AuthProvider>
               <TimeLine />
+            </AuthProvider>
+          },
+          {
+            label: 'AI助手',
+            path: "/other/AIChart",
+            element: <AuthProvider>
+              <AIChart />
             </AuthProvider>
           }
         ]

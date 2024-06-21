@@ -15,6 +15,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.3.1",
     "@antv/x6": "^2.18.1",
+    "@microsoft/fetch-event-source": "^2.0.1",
     "@photo-sphere-viewer/autorotate-plugin": "^5.7.2",
     "@photo-sphere-viewer/core": "^5.7.2",
     "@photo-sphere-viewer/markers-plugin": "^5.7.2-fix.1",
