@@ -1,0 +1,95 @@
+.msg_item {
+  width: 100%;
+  height: auto;
+  :global {
+    .message_item_box {
+      width: 100%;
+      height: auto;
+      .action_bar {
+        cursor: default;
+        width: auto;
+        height: 20px;
+        line-height: 20px;
+        margin-top: 10px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        .action_item {
+          display: inline-block;
+          padding: 4px 10px;
+          cursor: pointer;
+          color: #999999;
+          font-size: 14px;
+          border-radius: 6px;
+        }
+        .action_item:hover {
+          background-color: #f5f5f5;
+        }
+      }
+      .talk-item {
+        cursor: default;
+        width: auto;
+        height: auto;
+        color: #000000D9;
+        font-size: 16px;
+        line-height: 1.8;
+        pre {
+          margin-bottom: 20px;
+        }
+        .code-area {
+          background-color: #12131b;
+          padding: 46px 20px 20px;
+          border-radius: 10px;
+          position: relative;
+          overflow: hidden;
+          .code-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 775px;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 16px;
+            color: #ffffffA6;
+            background-color: #343541;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            .hljs_copy {
+              cursor: pointer;
+              color: #ffffffA6;
+              font-size: 12px;
+            }
+            code {
+              font-family: 'Math';
+            }
+          }
+        }
+        & pre:last-child {
+          margin-bottom: 0;
+        }
+        pre code.hljs {
+          border-radius: 0 0 10px 10px;
+        }
+      }
+      .talk-item-user {
+        display: inline-block;
+        width: auto;
+        background-color: $primary;
+        color: #fff;
+        padding: 10px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+    }
+    .message_item_box:hover {
+      .action_bar {
+        opacity: 1;
+      }
+    }
+  }
+}
+.msg_item_user {
+  text-align: right;
+}

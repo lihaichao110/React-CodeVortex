@@ -10,6 +10,10 @@ export interface ResponseParamsType {
     role: 'user' | 'assistant'
     type: string
   }
+  error_information: {
+    err_code: number
+    err_msg: string
+  }
 }
 
 export interface MsgItem {

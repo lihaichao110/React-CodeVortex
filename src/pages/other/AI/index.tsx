@@ -41,7 +41,20 @@ export default function AIChart() {
 
   let str = ''
   const handleMessage = (ev: ResponseParamsType) => {
-    console.log(ev, 'eee');
+    // console.log(ev, 'eee');
+    if(ev.event === 'error') {
+      messageApi.error(ev.error_information.err_msg)
+      setMessage((value) => {
+        value[value.length - 1] = {
+          role: 'assistant',
+          content: ev.error_information.err_msg,
+          content_type: 'text',
+          type: 'answer'
+        }
+        return [...value]
+      })
+      return
+    }
     if(ev.event === 'done') {
       console.log('全部完成');
       return
@@ -69,11 +82,13 @@ export default function AIChart() {
       <div className="container">
         {contextHolder}
         <div className="message-list">
-          {
-            msg?.length 
-            ? <MessageList messsgeList={msg}/>
-            : <EmptyComponent />
-          }
+          <div className="scroll_view">
+            {
+              msg?.length 
+              ? <MessageList messsgeList={msg}/>
+              : <EmptyComponent />
+            }
+          </div>
         </div>
         <div className="footer">
           <Flex className='footer-flex'>

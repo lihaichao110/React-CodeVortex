@@ -2,6 +2,8 @@ import classNames from "classnames"
 import { MsgItem } from "../../types"
 import styles from './index.module.scss'
 import MessageLoading from "./components/message-loading"
+import MessageItem from "./components/message-item"
+
 type MessageListProps = {
   messsgeList: MsgItem[]
 }
@@ -19,38 +21,17 @@ export default function MessageList({ messsgeList }: MessageListProps) {
                   item.role === 'user' && 'message-box-user',
                 ])
               }>
-              <div 
-                className={
-                  classNames([
-                    'talk-item',
-                    item.role === 'user' && 'talk-item-user',
-                  ])
-                }>
-                  { 
-                    item.type === 'loading' 
-                    ? <MessageLoading />
-                    : <MessageItem>
-                      { item.content }
-                    </MessageItem>
-                  }
-              </div>
+                { 
+                  item.type === 'loading' 
+                  ? <MessageLoading />
+                  : <MessageItem role={item.role}>
+                    { item.content }
+                  </MessageItem>
+                }
             </div>
           )
         })
       }
     </div>
-  )
-}
-
-type MessageValueProps = {
-  children: string
-}
-function MessageItem({ children }: MessageValueProps) {
-  return (
-    <>
-      { 
-        children
-      }
-    </>
   )
 }
