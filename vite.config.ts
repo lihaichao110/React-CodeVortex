@@ -6,7 +6,7 @@ import path from "path"
 export default defineConfig(({ mode }) => {
   const proxyName = loadEnv(mode, process.cwd()).VITE_APP_API;
   const proxyUrl = loadEnv(mode, process.cwd()).VITE_APP_BASEURL;
-  
+
   return {
     base: '/app/',
     server: {
@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
             return path.replace(new RegExp(`^${proxyName}`), '')
           }
         },
-        '/test' : {
+        '/test': {
           target: 'https://sample-videos.com',
           changeOrigin: true,
           rewrite: (path) => {
@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => {
           main: path.resolve(__dirname, './index.html'),
         },
         output: {
-          dir: './dist/app',
+          dir: './dist',
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return id
@@ -83,7 +83,7 @@ export default defineConfig(({ mode }) => {
         }
       }),
       requireTransform({
-        fileRegex:  /.ts$|.tsx$/
+        fileRegex: /.ts$|.tsx$/
       })
     ],
   }
