@@ -141,9 +141,7 @@ const routes: RouteType[] = [
     element: AsyncComponent(<NotFound />)
   }
 ]
-const router = createBrowserRouter(routes as RouteObject[], {
-  basename: '/app/'
-})
+const router = createBrowserRouter(routes as RouteObject[])
 
 export default router
 export {
