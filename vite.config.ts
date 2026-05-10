@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const proxyUrl = loadEnv(mode, process.cwd()).VITE_APP_BASEURL;
 
   return {
-    base: '/app/',
+    // base: '/app/',
     server: {
       proxy: {
         [proxyName]: {

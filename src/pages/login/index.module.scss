@@ -1,36 +1,270 @@
+// 主题颜色
+$primary: #396AFC;
+$secondary: #78FFD6;
+
+// 卡片
+$card-bg: #121825;
+$card-border: #262c3f;
+
+// 输入框
+$input-bg: #191e2d;
+$input-border: #232938;
+
+// 文字
+$text-secondary: rgba(224, 217, 217, 0.6);
+$text-placeholder: rgba(255, 255, 255, 0.5);
+
 .root {
   width: 100%;
   height: 100%;
   :global {
-    .login {
+    .login-page {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       min-height: 100vh;
-      background: url('@/assets/imgs/login/loginBgc.jpg') no-repeat;
-      background-size: 100% 100%;
+      background: url('@/assets/imgs/login/loginBgc.png') no-repeat;
+      background-size: cover;
       background-position: center center;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      .card {
-        width: auto;
-        height: auto;
-        padding: 20px 70px;
-        border-radius: 10px;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      padding: 0 60px;
+
+      .left-section {
+        flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        background: -webkit-linear-gradient(90deg, #396AFC, #78FFD6);;
-        h1 { 
-          color: #fff; 
-          text-shadow: 0 0 10px rgba(0,0,0,0.3); 
-          letter-spacing:1px; 
-          text-align:center; 
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+        padding: 40px 0;
+
+        .brand-info {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 40px;
+
+          .brand-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+          }
+
+          .brand-name {
+            font-size: 32px;
+            font-weight: 600;
+            color: $white;
+            letter-spacing: 2px;
+          }
         }
-        .tips {
-          color: #fff;
+
+        .intro-block {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          .intro-slogan {
+            font-size: 30px;
+            font-weight: 500;
+            color: $white;
+          }
+
+          .intro-desc {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+          }
+
+          .intro-line {
+            display: inline-block;
+            width: 40px;
+            height: 2px;
+            background-color: $primary;
+          }
+        }
+
+        .standardization {
+          color: $text-secondary;
+          font-size: 14px;
         }
       }
+
+      .right-section {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        padding: 40px 0;
+
+        .login-card {
+          width: 100%;
+          max-width: 480px;
+          background: $card-bg;
+          border-radius: 12px;
+          padding: 48px 40px;
+          border: 1px solid $card-border;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+          .login-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: $white;
+            margin-bottom: 8px;
+          }
+
+          .login-subtitle {
+            font-size: 14px;
+            color: $text-secondary;
+            margin-bottom: 32px;
+          }
+
+          .input-wrapper {
+            margin-bottom: 10px;
+          }
+
+          .options-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+
+            .forgot-link {
+              font-size: 14px;
+              color: $primary;
+              cursor: pointer;
+              transition: opacity 0.2s;
+
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+
+          .submit-btn {
+            width: 100%;
+            height: 44px;
+            background: $primary;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            color: $white;
+            cursor: pointer;
+            transition: opacity 0.2s;
+
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+
+          .third-party-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+
+            .third-party-item {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 8px;
+              cursor: pointer;
+
+              :global(.anticon) {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                border: 1px solid $input-border;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                color: $text-secondary;
+                transition: border-color 0.2s;
+
+                &:hover {
+                  border-color: $primary;
+                }
+              }
+
+              span {
+                font-size: 12px;
+                color: $text-secondary;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // 表单相关 antd 样式
+    .ant-form-item-label > label {
+      color: #d5d4d4 !important;
+    }
+    .ant-form-item-label > label.ant-form-item-required::before {
+      display: none !important;
+    }
+
+    .ant-input-affix-wrapper {
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid $input-border;
+      background: $input-bg;
+      backdrop-filter: blur(10px);
+
+      .ant-input-password-icon {
+        color: $text-placeholder; 
+      }
+
+      &:hover, &:focus {
+        border-color: $primary;
+      }
+    }
+
+    .ant-input {
+      font-size: 14px !important;
+      background: transparent !important;
+      color: $text-placeholder !important;
+      padding: 0;
+      height: auto;
+      &::placeholder {
+        color: $text-placeholder;
+      }
+    }
+
+    .ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+      background: $input-bg;
+    }
+
+    .ant-input-prefix {
+      margin-right: 10px;
+      color: $text-placeholder;
+      font-size: 16px;
+    }
+
+    .ant-input-password-icon {
+      color: $text-placeholder;
+    }
+
+    .ant-checkbox-wrapper {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: $primary;
+      border-color: $primary;
+    }
+    .ant-checkbox .ant-checkbox-inner {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .ant-divider {
+      color: $text-secondary !important;
+      border-color: $input-border !important;
+      margin: 24px 0;
     }
   }
 }
